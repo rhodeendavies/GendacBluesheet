@@ -1,0 +1,310 @@
+﻿@model GendacBluesheet.bluesheetdocument
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h1>Blue Sheet</h1>
+    <div class="card">
+        <div class="card-header">
+            <h2 class="mb-0" data-toggle="collapse" href="#singleSO">Single Sales Objective</h2>
+        </div>
+
+        <div id="singleSO" class="collapse p-3">
+            <div class="form-group">
+                <label for="compName">Company Name</label>
+                <input class="form-control" type="text" name="compName" id="compName" value="" />
+            </div>
+            <div class="form-group">
+                <label for="oppType">What is the opportunity?</label>
+                <input class="form-control" type="text" name="oppType" id="oppType" value="" />
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <label for="oppSize">Size of the opportunity</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">R</span>
+                        </div>
+                        <input class="form-control currency" type="number" name="oppSize" id="oppSize" value="" />
+                    </div>
+
+                </div>
+                <div class="col">
+                    <label for="oppTime">Timing for the opportunity</label>
+                    <input class="form-control" type="date" name="oppTime" id="oppTime" value="" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h2 class="mb-0" data-toggle="collapse" href="#rateClient">Rate the Client</h2>
+        </div>
+
+        <div id="rateClient" class="collapse p-3 show">
+
+            <div class="form-group row">
+                <div class="col-5 mr-5">
+                    <label for="turnOver">What is the turnover?</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">R</span>
+                        </div>
+                        <input class="form-control" type="number" name="turnOver" id="turnOver">
+                    </div>
+                </div>
+                <div class="col">
+                    <label for="clientAge">How long have they been in business?</label>
+                    <div class="input-group">
+                        <input class="form-control" type="number" name="clientAge" id="clientAge">
+                        <div class="input-group-append">
+                            <span class="input-group-text">years</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-5 mr-5">
+                    <label>Industry</label>
+                    <div class="input-group">
+                        <select name="industry" class="form-control">
+                            <option value="finance">Finance</option>
+                            <option value="technology">Technology</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="retail">Retail</option>
+                            <option value="investment">Investment</option>
+                            <option value="sales">Sales</option>
+                            <option value="production">Production</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <label for="clientComp">Who are their competitors?</label>
+                    <input class="form-control" type="text" name="clientComp" id="clientComp">
+                </div>
+
+            </div>
+
+            <div class="form-group row oddRow">
+                <label class="col-5 col-form-label">Location</label>
+                <div class="btn-group btn-group-justified col px-0" data-toggle="buttons">
+                    <label class="btn btn-light col-4 m-0 h-100">
+                        <input type="radio" name="location" value="provinsial" id="provinsial">Provincial
+                    </label>
+                    <label class="btn btn-light col-4 m-0 h-100">
+                        <input type="radio" name="location" value="national" id="national">National
+                    </label>
+                    <label class="btn btn-light col-4 m-0 h-100">
+                        <input type="radio" name="location" value="international" id="international">International
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group row evenRow">
+                <label class="col-5 col-form-label">Response Mode</label>
+                <div class="btn-group btn-group-justified col px-0" data-toggle="buttons">
+                    <label class="btn btn-light col-4 m-0 h-100">
+                        <input type="radio" name="respMode" value="growth" id="growth">Growth
+                    </label>
+                    <label class="btn btn-light col-4 m-0 h-100">
+                        <input type="radio" name="respMode" value="trouble" id="trouble">Trouble
+                    </label>
+                    <label class="btn btn-light col-4 m-0 h-100">
+                        <input type="radio" name="respMode" value="other" id="other">Other
+                    </label>
+                </div>
+
+            </div>
+
+
+            <div class="form-group row oddRow">
+                <label class="col-5 col-form-label">How dependant are they on technology?</label>
+                <div class="btn-group btn-group-justified col px-0" data-toggle="buttons">
+                    <label class="btn btn-light col-4 m-0 h-100">
+                        <input type="radio" name="techDependancy" value="little" id="little">Little
+                    </label>
+                    <label class="btn btn-light col-4 m-0 h-100">
+                        <input type="radio" name="techDependancy" value="medium" id="medium">Medium
+                    </label>
+                    <label class="btn btn-light col-4 m-0 h-100">
+                        <input type="radio" name="techDependancy" value="very" id="very">Very
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group row evenRow">
+                <label class="col-5 col-form-label">Are they an advisable client?</label>
+                <div class="btn-group btn-group-justified col px-0" data-toggle="buttons">
+                    <label class="btn btn-light col-4 m-0 h-100">
+                        <input type="radio" name="advisable" value="little" id="little">Little
+                    </label>
+                    <label class="btn btn-light col-4 m-0 h-100">
+                        <input type="radio" name="advisable" value="medium" id="medium">Medium
+                    </label>
+                    <label class="btn btn-light col-4 m-0 h-100">
+                        <input type="radio" name="advisable" value="very" id="very">Very
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group row oddRow">
+                <label class="col-5 col-form-label">Have they used external developers?</label>
+                <div class="btn-group btn-group-justified col px-0" data-toggle="buttons">
+                    <label class="btn btn-light col-4 m-0 h-100">
+                        <input type="radio" name="extDev" value="yes" id="yes">Yes
+                    </label>
+                    <label class="btn btn-light col-4 m-0 h-100">
+                        <input type="radio" name="extDev" value="no" id="no">No
+                    </label>
+                    <label class="btn btn-light col-4 m-0 h-100">
+                        <input type="radio" name="extDev" value="unknown" id="unknown">Unknown
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group mt-3 row">
+                <label class="col-6 col-form-label" for="extDevSpend">How much do they spend on external developing?</label>
+                <div class="input-group col px-0">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">R</span>
+                    </div>
+                    <input class="form-control" type="number" name="extDevSpend" id="extDevSpend">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h2 class="mb=0" data-toggle="collapse" href="#competitors">Our Competitors for the opportunity</h2>
+        </div>
+
+        <div id="competitors" class="collapse p-2 show">
+            <div class="px-2 py-1">
+                <h5>Select all that apply:</h5>
+            </div>
+
+            <div class="px-3 py-2">
+                <div class="form-group row" id="btnOtherComp">
+                    <div class="col-6 btn text-left">
+                        <input id="otherComp" class="styled-checkbox unchecked" type="checkbox" name="otherCompCheck">
+                        <label for="otherComp">Other Company</label>
+                    </div>
+                </div>
+
+                <div class="form-group row" id="btnBudgetElse">
+                    <div class="col-6 btn text-left">
+                        <input id="budgetElse" class="styled-checkbox col-6 unchecked" type="checkbox" name="budgetElseCheck">
+                        <label for="budgetElse">Use budget for something else</label>
+                    </div>
+                </div>
+
+                <div class="form-group row" id="btnIntResources">
+                    <div class="col-6 btn text-left">
+                        <input id="intResources" class="styled-checkbox col-6 unchecked" type="checkbox" name="intResources">
+                        <label for="intResources">Use internal resources</label>
+                    </div>
+                </div>
+
+                <div class="form-group row" id="btnDoNothing">
+                    <div class="col-6 btn text-left">
+                        <input id="doNothing" class="styled-checkbox col-6 unchecked" type="checkbox" name="doNothing">
+                        <label for="doNothing">Do nothing</label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+
+            <h2 class="mb-0" data-toggle="collapse" href="#buyingInfluences">Buying Influences</h2>
+        </div>
+
+        <div id="buyingInfluences" class="collapse p-2">
+            <div class="card-body">
+                <div class="form-group">
+
+                    <label>Buyer Type</label>
+                    <div class="input-group">
+                        <select name="buyerType" class="form-control">
+                            <option value="economic">Economic</option>
+                            <option value="technical">Techincal</option>
+                            <option value="user">User</option>
+                            <option value="coach">Coach</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col">
+                        <label for="buyerName">Buyer Name</label>
+                        <input class="form-control" type="text" name="buyerName" id="buyerName">
+                    </div>
+                    <div class="col">
+                        <label for="winRes">Win Result</label>
+                        <input class="form-control" type="text" name="winRes" id="winRes">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h2 class="mb-0" data-toggle="collapse" href="#strengthRF">Strengths and Red Flags</h2>
+        </div>
+
+        <div id="strengthRF" class="collapse p-2">
+            <div class="form-group row">
+                <div class="col">
+                    <label for="strength1">Strength</label>
+                    <input class="form-control" type="text" name="strength" id="strength">
+                </div>
+                <div class="col">
+                    <label for="leverage">Leverage</label>
+                    <input class="form-control" type="text" name="leverage" id="leverage">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col">
+                    <label for="redFlag1">Red Flag</label>
+                    <input class="form-control" type="text" name="redFlag" id="redFlag">
+                </div>
+                <div class="col">
+                    <label for="strategy">Strategy</label>
+                    <input class="form-control" type="text" name="strategy" id="strategy">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+   
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

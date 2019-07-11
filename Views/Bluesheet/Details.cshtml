@@ -1,0 +1,162 @@
+﻿@model GendacBluesheet.bluesheetdocument
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>bluesheetdocument</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.compName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.compName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oppType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oppType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oppSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oppSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oppTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oppTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clientAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clientAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.turnOver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.turnOver)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.respMode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.respMode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.industry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.industry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clientComp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clientComp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.techDependancy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.techDependancy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.advisable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.advisable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.extDev)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.extDev)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.extDevSpend)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.extDevSpend)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.doNothing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.doNothing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.otherComp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.otherComp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.intResources)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.intResources)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.budgetElse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.budgetElse)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

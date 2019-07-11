@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GendacBlueSheetModelStoreContainer" CdmEntityContainer="GendacBlueSheetEntities">
+    <EntitySetMapping Name="bluesheetdocuments">
+      <EntityTypeMapping TypeName="GendacBlueSheetModel.bluesheetdocument">
+        <MappingFragment StoreEntitySet="bluesheetdocuments">
+          <ScalarProperty Name="compName" ColumnName="compName" />
+          <ScalarProperty Name="oppType" ColumnName="oppType" />
+          <ScalarProperty Name="oppSize" ColumnName="oppSize" />
+          <ScalarProperty Name="oppTime" ColumnName="oppTime" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="clientAge" ColumnName="clientAge" />
+          <ScalarProperty Name="turnOver" ColumnName="turnOver" />
+          <ScalarProperty Name="respMode" ColumnName="respMode" />
+          <ScalarProperty Name="industry" ColumnName="industry" />
+          <ScalarProperty Name="clientComp" ColumnName="clientComp" />
+          <ScalarProperty Name="techDependancy" ColumnName="techDependancy" />
+          <ScalarProperty Name="advisable" ColumnName="advisable" />
+          <ScalarProperty Name="extDev" ColumnName="extDev" />
+          <ScalarProperty Name="extDevSpend" ColumnName="extDevSpend" />
+          <ScalarProperty Name="doNothing" ColumnName="doNothing" />
+          <ScalarProperty Name="otherComp" ColumnName="otherComp" />
+          <ScalarProperty Name="intResources" ColumnName="intResources" />
+          <ScalarProperty Name="budgetElse" ColumnName="budgetElse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="buyers">
+      <EntityTypeMapping TypeName="GendacBlueSheetModel.buyer">
+        <MappingFragment StoreEntitySet="buyers">
+          <ScalarProperty Name="buyerName" ColumnName="buyerName" />
+          <ScalarProperty Name="buyerID" ColumnName="buyerID" />
+          <ScalarProperty Name="winRes" ColumnName="winRes" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="buyerType" ColumnName="buyerType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="redFlags">
+      <EntityTypeMapping TypeName="GendacBlueSheetModel.redFlag">
+        <MappingFragment StoreEntitySet="redFlags">
+          <ScalarProperty Name="redFlag1" ColumnName="redFlag" />
+          <ScalarProperty Name="strategy" ColumnName="strategy" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="redFlagID" ColumnName="redFlagID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="strengths">
+      <EntityTypeMapping TypeName="GendacBlueSheetModel.strength">
+        <MappingFragment StoreEntitySet="strengths">
+          <ScalarProperty Name="strength1" ColumnName="strength" />
+          <ScalarProperty Name="leverage" ColumnName="leverage" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="strengthID" ColumnName="strengthID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

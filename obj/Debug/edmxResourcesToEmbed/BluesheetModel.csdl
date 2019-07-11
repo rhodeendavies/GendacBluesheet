@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GendacBlueSheetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="bluesheetdocument">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="compName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="oppType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="oppSize" Type="Int32" />
+    <Property Name="oppTime" Type="DateTime" Precision="3" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="clientAge" Type="Int32" />
+    <Property Name="turnOver" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="respMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="industry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="clientComp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="techDependancy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="advisable" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="extDev" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="extDevSpend" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="doNothing" Type="Boolean" />
+    <Property Name="otherComp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="intResources" Type="Boolean" />
+    <Property Name="budgetElse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="buyers" Relationship="Self.FK_buyers_bluesheetdocuments" FromRole="bluesheetdocuments" ToRole="buyers" />
+    <NavigationProperty Name="redFlags" Relationship="Self.FK_redFlags_bluesheetdocuments" FromRole="bluesheetdocuments" ToRole="redFlags" />
+    <NavigationProperty Name="strengths" Relationship="Self.FK_strengths_bluesheetdocuments" FromRole="bluesheetdocuments" ToRole="strengths" />
+  </EntityType>
+  <EntityType Name="buyer">
+    <Key>
+      <PropertyRef Name="buyerID" />
+    </Key>
+    <Property Name="buyerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="buyerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="winRes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="buyerType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="bluesheetdocument" Relationship="Self.FK_buyers_bluesheetdocuments" FromRole="buyers" ToRole="bluesheetdocuments" />
+  </EntityType>
+  <EntityType Name="redFlag">
+    <Key>
+      <PropertyRef Name="redFlagID" />
+    </Key>
+    <Property Name="redFlag1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="strategy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id" Type="Int32" />
+    <Property Name="redFlagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="bluesheetdocument" Relationship="Self.FK_redFlags_bluesheetdocuments" FromRole="redFlags" ToRole="bluesheetdocuments" />
+  </EntityType>
+  <EntityType Name="strength">
+    <Key>
+      <PropertyRef Name="strengthID" />
+    </Key>
+    <Property Name="strength1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="leverage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id" Type="Int32" />
+    <Property Name="strengthID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="bluesheetdocument" Relationship="Self.FK_strengths_bluesheetdocuments" FromRole="strengths" ToRole="bluesheetdocuments" />
+  </EntityType>
+  <Association Name="FK_buyers_bluesheetdocuments">
+    <End Role="bluesheetdocuments" Type="Self.bluesheetdocument" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="buyers" Type="Self.buyer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bluesheetdocuments">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="buyers">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_redFlags_bluesheetdocuments">
+    <End Role="bluesheetdocuments" Type="Self.bluesheetdocument" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="redFlags" Type="Self.redFlag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bluesheetdocuments">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="redFlags">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_strengths_bluesheetdocuments">
+    <End Role="bluesheetdocuments" Type="Self.bluesheetdocument" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="strengths" Type="Self.strength" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bluesheetdocuments">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="strengths">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GendacBlueSheetEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="bluesheetdocuments" EntityType="Self.bluesheetdocument" />
+    <EntitySet Name="buyers" EntityType="Self.buyer" />
+    <EntitySet Name="redFlags" EntityType="Self.redFlag" />
+    <EntitySet Name="strengths" EntityType="Self.strength" />
+    <AssociationSet Name="FK_buyers_bluesheetdocuments" Association="Self.FK_buyers_bluesheetdocuments">
+      <End Role="bluesheetdocuments" EntitySet="bluesheetdocuments" />
+      <End Role="buyers" EntitySet="buyers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_redFlags_bluesheetdocuments" Association="Self.FK_redFlags_bluesheetdocuments">
+      <End Role="bluesheetdocuments" EntitySet="bluesheetdocuments" />
+      <End Role="redFlags" EntitySet="redFlags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_strengths_bluesheetdocuments" Association="Self.FK_strengths_bluesheetdocuments">
+      <End Role="bluesheetdocuments" EntitySet="bluesheetdocuments" />
+      <End Role="strengths" EntitySet="strengths" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
