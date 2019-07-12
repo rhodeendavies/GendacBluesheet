@@ -16,7 +16,7 @@ namespace GendacBluesheet.Controllers
         private GendacBlueSheetEntities db = new GendacBlueSheetEntities();
 
         // GET: Bluesheet
-        public ActionResult Home()
+        public ActionResult Index()
         {
             return View(db.bluesheetdocuments.ToList());
         }

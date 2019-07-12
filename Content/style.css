@@ -38,6 +38,10 @@ input[type="radio"]{
 	display : none;
 }
 
+.redFlag{
+    border-color: red !important;
+}
+
 input.currency {
 	text-align: right;
 	padding-right: 15px;
@@ -101,4 +105,8 @@ input[type="checkbox"]:checked + label:before {
   border-left-color: transparent;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.fas{
+    color: red;
 }

@@ -194,7 +194,7 @@
     <Content Include="Views\Bluesheet\Delete.cshtml" />
     <Content Include="Views\Bluesheet\Details.cshtml" />
     <Content Include="Views\Bluesheet\Edit.cshtml" />
-    <Content Include="Views\Bluesheet\Home.cshtml" />
+    <Content Include="Views\Bluesheet\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

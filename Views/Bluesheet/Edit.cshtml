@@ -4,6 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
+<script src="~/Scripts/edit.js"></script>
    
 
 @using (Html.BeginForm())
@@ -18,11 +19,20 @@
         <div id="singleSO" class="collapse p-3 show">
             <div class="form-group">
                 <label for="compName">Company Name</label>
-                @Html.EditorFor(model => model.compName, new { htmlAttributes = new { @class = "form-control redFlaggable" } })
+                <div class="input-group">
+                    @Html.EditorFor(model => model.compName, new { htmlAttributes = new { @class = "form-control redFlaggable" } })
+                    <div class="input-group-append">
+                        
+                    </div>
+                </div>
+                
             </div>
             <div class="form-group">
                 <label for="oppType">What is the opportunity?</label>
-                @Html.EditorFor(model => model.oppType, new { htmlAttributes = new { @class = "form-control redFlaggable" } })
+                <div class="input-group">
+                    @Html.EditorFor(model => model.oppType, new { htmlAttributes = new { @class = "form-control redFlaggable" } })
+                </div>
+                
             </div>
             <div class="form-row">
                 <div class="col">
@@ -31,13 +41,15 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        @Html.EditorFor(model => model.oppSize, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.oppSize, new { htmlAttributes = new { @class = "form-control redFlaggable" } })
                     </div>
 
                 </div>
                 <div class="col">
                     <label for="oppTime">Timing for the opportunity</label>
-                    @Html.EditorFor(model => model.oppTime, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="input-group">
+                        @Html.EditorFor(model => model.oppTime, new { htmlAttributes = new { @class = "form-control redFlaggable" } })
+                    </div>
                 </div>
             </div>
         </div>
@@ -57,13 +69,13 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">R</span>
                         </div>
-                        @Html.EditorFor(model => model.turnOver, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.turnOver, new { htmlAttributes = new { @class = "form-control redFlaggable" } })
                     </div>
                 </div>
                 <div class="col">
                     <label for="clientAge">How long have they been in business?</label>
                     <div class="input-group">
-                        @Html.EditorFor(model => model.clientAge, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.clientAge, new { htmlAttributes = new { @class = "form-control redFlaggable" } })
                         <div class="input-group-append">
                             <span class="input-group-text">years</span>
                         </div>
@@ -88,9 +100,12 @@
 
                 <div class="col">
                     <label for="clientComp">Who are their competitors?</label>
-                    @Html.EditorFor(model => model.clientComp, new { htmlAttributes = new { @class = "form-control" } })
-                </div>
+                    <div class="input-group">
+                        @Html.EditorFor(model => model.clientComp, new { htmlAttributes = new { @class = "form-control redFlaggable" } })
 
+                    </div>
+
+                </div>
             </div>
 
             <div class="form-group row oddRow">
@@ -191,7 +206,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">R</span>
                     </div>
-                    @Html.EditorFor(model => model.extDevSpend, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.extDevSpend, new { htmlAttributes = new { @class = "form-control redFlaggable" } })
                 </div>
             </div>
         </div>
@@ -222,8 +237,9 @@
                         <label for="otherCompCheck">Other Company</label>
                     </div>
                     <div class="col">
-
-                        @Html.EditorFor(model => model.otherComp, new { htmlAttributes = new { @class = "form-control" } })
+                        <div class="input-group">
+                            @Html.EditorFor(model => model.otherComp, new { htmlAttributes = new { @class = "form-control redFlaggable" } })
+                        </div>
                     </div>
                 </div>
 
@@ -240,7 +256,9 @@
                         <label for="budgetElseCheck">Use budget for something else</label>
                     </div>
                     <div class="col">
-                        @Html.EditorFor(model => model.budgetElse, new { htmlAttributes = new { @class = "form-control", id = "budgetElse" } })
+                        <div class="input-group">
+                            @Html.EditorFor(model => model.budgetElse, new { htmlAttributes = new { @class = "form-control redFlaggable", id = "budgetElse" } })
+                        </div>
                     </div>
                 </div>
 
@@ -331,13 +349,17 @@
                             </div>
                             <div class="col">
                                 <label for="buyerName">Buyer Name</label>
-                                @Html.EditorFor(model => model.buyers.ElementAt(i).buyerName, new { htmlAttributes = new {  @Name = string.Format("buyers[{0}].buyerName", i),
-                                                                                                                            @class = "form-control" } })
+                                <div class="input-group">
+                                    @Html.EditorFor(model => model.buyers.ElementAt(i).buyerName, new { htmlAttributes = new {  @Name = string.Format("buyers[{0}].buyerName", i),
+                                                                                                                            @class = "form-control redFlaggable" } })
+                                </div>
                             </div>
                             <div class="col">
                                 <label for="winRes">Win Result</label>
-                                @Html.EditorFor(model => model.buyers.ElementAt(i).winRes, new { htmlAttributes = new {  @Name = string.Format("buyers[{0}].winRes", i),
-                                                                                                                        @class = "form-control" } })
+                                <div class="input-group">
+                                    @Html.EditorFor(model => model.buyers.ElementAt(i).winRes, new { htmlAttributes = new {  @Name = string.Format("buyers[{0}].winRes", i),
+                                                                                                                        @class = "form-control redFlaggable" } })
+                                </div>
                             </div>
 
                             @Html.EditorFor(model => model.buyers.ElementAt(i).buyerID, new { htmlAttributes = new {  @Name = string.Format("buyers[{0}].buyerID", i),
@@ -365,13 +387,17 @@
                         <div class="form-group row">
                             <div class="col">
                                 @if(i < 1){<label>Strengths</label>}
-                                @Html.EditorFor(model => model.strengths.ElementAt(i).strength1, new { htmlAttributes = new {  @Name = string.Format("strengths[{0}].strength1", i),
-                                                                                                                            @class = "form-control" } })
+                                <div class="input-group">
+                                    @Html.EditorFor(model => model.strengths.ElementAt(i).strength1, new { htmlAttributes = new {  @Name = string.Format("strengths[{0}].strength1", i),
+                                                                                                                            @class = "form-control redFlaggable" } })
+                                </div>
                             </div>
                             <div class="col">
                                 @if(i < 1){<label>Leverages</label>}
-                                @Html.EditorFor(model => model.strengths.ElementAt(i).leverage, new { htmlAttributes = new {  @Name = string.Format("strengths[{0}].leverage", i),
-                                                                                                                        @class = "form-control" } })
+                                <div class="input-group">
+                                    @Html.EditorFor(model => model.strengths.ElementAt(i).leverage, new { htmlAttributes = new {  @Name = string.Format("strengths[{0}].leverage", i),
+                                                                                                                        @class = "form-control redFlaggable" } })
+                                </div>
                             </div>
                         </div>
                     }
@@ -384,13 +410,17 @@
                         <div class="form-group row">
                             <div class="col">
                                 @if(i < 1){<label>Red Flags</label>}
-                                @Html.EditorFor(model => model.redFlags.ElementAt(i).redFlag1, new { htmlAttributes = new {  @Name = string.Format("redFlags[{0}].redFlag1", i),
-                                                                                                                            @class = "form-control" } })
+                                <div class="input-group">
+                                    @Html.EditorFor(model => model.redFlags.ElementAt(i).redFlag1, new { htmlAttributes = new {  @Name = string.Format("redFlags[{0}].redFlag1", i),
+                                                                                                                            @class = "form-control redFlaggable" } })
+                                </div>
                             </div>
                             <div class="col">
                                 @if(i < 1){<label>Strategies</label>}
-                                @Html.EditorFor(model => model.redFlags.ElementAt(i).strategy, new { htmlAttributes = new {  @Name = string.Format("redFlags[{0}].strategy", i),
-                                                                                                                        @class = "form-control" } })
+                                <div class="input-group">
+                                    @Html.EditorFor(model => model.redFlags.ElementAt(i).strategy, new { htmlAttributes = new {  @Name = string.Format("redFlags[{0}].strategy", i),
+                                                                                                                        @class = "form-control redFlaggable" } })
+                                </div>
                             </div>
                         </div>
                     }
