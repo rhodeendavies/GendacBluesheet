@@ -5,16 +5,36 @@
 @Scripts.Render("https://statics.teams.microsoft.com/sdk/v1.0/js/MicrosoftTeams.min.js")
 <script src="~/Scripts/edit.js"></script>
 
-<div class="font-semibold font-title">Configure your app here</div>
-<p>
-    <div>
-        <label for="tabChoice">Select the tab you would like to see: </label>
-        <select id="tabChoice" name="tabChoice">
-            <option value="" selected="selected">(Select a tab)</option>
-            <option value="first">First</option>
-            <option value="second">Second</option>
-        </select>
-    </div>
-</p>
+    <div class="font-semibold font-title">Configure your app here</div>
+        <p>
+            <div>
+                <label for="tabChoice">Select the tab you would like to see: </label>
+                <select id="tabChoice" name="tabChoice">
+                    <option value="" selected="selected">(Select a tab)</option>
+                    <option value="first">First</option>
+                    <option value="second">Second</option>
+                </select>
+            </div>
+        </p>
 
 
+        <script type="text/javascript">
+            microsoftTeams.initialize();
+            microsoftTeams.settings.registerOnSaveHandler(function (saveEvent) {
+
+                var radios = document.getElementsByName("maptype");
+                microsoftTeams.settings.setSettings({
+                    entityId: "blueSheet",
+                    contentUrl: "https://gendacbluesheet20190711054353.azurewebsites.net/Bluesheet/Create",
+                    suggestedDisplayName: "Blue Sheet",
+                    websiteUrl: "https://gendacbluesheet20190711054353.azurewebsites.net/Bluesheet/Configure",
+                    removeUrl: "https://gendacbluesheet20190711054353.azurewebsites.net/Bluesheet/Configure",
+                });
+
+                saveEvent.notifySuccess();
+            });
+
+            function onClick() {
+                microsoftTeams.settings.setValidityState(true);
+            }
+        </script>
