@@ -177,6 +177,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\edit.js" />
     <Content Include="Scripts\script.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -212,6 +213,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
+    <Content Include="Views\Bluesheet\Configure.cshtml" />
+    <None Include="Properties\PublishProfiles\GendacBluesheet20190711054353 - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -21,6 +21,11 @@ namespace GendacBluesheet.Controllers
             return View(db.bluesheetdocuments.ToList());
         }
 
+        public ActionResult Configure()
+        {
+            return View();
+        }
+
         // GET: Bluesheet/Details/5
         public ActionResult Details(int? id)
         {
@@ -49,19 +54,36 @@ namespace GendacBluesheet.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "compName,oppType,oppSize,oppTime,id,location,clientAge,turnOver,respMode,industry,clientComp,techDependancy,advisable,extDev,extDevSpend")] bluesheetdocument bluesheetdocument,
-            [Bind(Include = "buyerName,buyerType,winRes,id,buyerID")] buyer buyer,
-            [Bind(Include = "redFlag1,strategy,id,redFlagID")] redFlag redFlag,
-            [Bind(Include = "strength1,leverage,id,strengthID")] strength strength)
+            [Bind(Include = "buyerName,buyerType,id,buyerID,winRes")] ICollection<buyer> buyers,
+            [Bind(Include = "redFlag1,strategy,id,redFlagID")] ICollection<redFlag> redFlags,
+            [Bind(Include = "strength1,leverage,id,strengthID")] ICollection<strength> strengths)
         {
             if (ModelState.IsValid)
             {
                 db.bluesheetdocuments.Add(bluesheetdocument);
-                if (buyer != null)
-                    db.buyers.Add(buyer);
-                if (redFlag != null)
-                    db.redFlags.Add(redFlag);
-                if (strength != null)
-                    db.strengths.Add(strength);
+                if (buyers != null)
+                {
+                    foreach(buyer b in buyers)
+                    {
+                        db.buyers.Add(b);
+                    }
+                }
+                if (redFlags != null)
+                {
+                    foreach (redFlag r in redFlags)
+                    {
+                        db.redFlags.Add(r);
+                    }
+                }
+                if (strengths != null)
+                {
+                    foreach (strength s in strengths)
+                    {
+                        db.strengths.Add(s);
+                    }
+                }
+
+              
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -89,15 +111,15 @@ namespace GendacBluesheet.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "compName,oppType,oppSize,oppTime,id,location,clientAge,turnOver,respMode,industry,clientComp,techDependancy,advisable,extDev,extDevSpend")] bluesheetdocument bluesheetdocument,
+        public ActionResult Edit([Bind(Include = "compName,oppType,oppSize,oppTime,id,location,clientAge,turnOver,respMode,industry,clientComp,techDependancy,advisable,extDev,extDevSpend,otherComp,budgetElse,intResources,doNothing")] bluesheetdocument bluesheetdocument,
             [Bind(Include = "buyerName,buyerType,id,buyerID,winRes")] ICollection<buyer> buyers)
         {
             if (ModelState.IsValid)
             {
-                /*foreach (var item in buyers)
+                foreach (var item in buyers)
                 {
                     db.Entry(item).State = EntityState.Modified;
-                }*/
+                }
                 
                 db.Entry(bluesheetdocument).State = EntityState.Modified;
                 db.SaveChanges();

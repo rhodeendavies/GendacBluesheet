@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GendacBlueSheetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="bluesheetdocuments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="compName" Type="varchar" MaxLength="50" />
+    <Property Name="oppType" Type="varchar(max)" />
+    <Property Name="oppSize" Type="int" />
+    <Property Name="oppTime" Type="datetime" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="location" Type="varchar" MaxLength="50" />
+    <Property Name="clientAge" Type="int" />
+    <Property Name="turnOver" Type="varchar" MaxLength="50" />
+    <Property Name="respMode" Type="varchar" MaxLength="50" />
+    <Property Name="industry" Type="varchar" MaxLength="50" />
+    <Property Name="clientComp" Type="varchar" MaxLength="50" />
+    <Property Name="techDependancy" Type="varchar" MaxLength="50" />
+    <Property Name="advisable" Type="varchar" MaxLength="50" />
+    <Property Name="extDev" Type="varchar" MaxLength="50" />
+    <Property Name="extDevSpend" Type="varchar" MaxLength="50" />
+    <Property Name="doNothing" Type="bit" />
+    <Property Name="otherComp" Type="varchar" MaxLength="50" />
+    <Property Name="intResources" Type="bit" />
+    <Property Name="budgetElse" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="buyers">
+    <Key>
+      <PropertyRef Name="buyerID" />
+    </Key>
+    <Property Name="buyerName" Type="varchar" MaxLength="50" />
+    <Property Name="buyerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="winRes" Type="varchar" MaxLength="50" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="buyerType" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="redFlags">
+    <Key>
+      <PropertyRef Name="redFlagID" />
+    </Key>
+    <Property Name="redFlag" Type="varchar" MaxLength="50" />
+    <Property Name="strategy" Type="varchar" MaxLength="50" />
+    <Property Name="id" Type="int" />
+    <Property Name="redFlagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="strengths">
+    <Key>
+      <PropertyRef Name="strengthID" />
+    </Key>
+    <Property Name="strength" Type="varchar" MaxLength="50" />
+    <Property Name="leverage" Type="varchar" MaxLength="50" />
+    <Property Name="id" Type="int" />
+    <Property Name="strengthID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_buyers_bluesheetdocuments">
+    <End Role="bluesheetdocuments" Type="Self.bluesheetdocuments" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="buyers" Type="Self.buyers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bluesheetdocuments">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="buyers">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_redFlags_bluesheetdocuments">
+    <End Role="bluesheetdocuments" Type="Self.bluesheetdocuments" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="redFlags" Type="Self.redFlags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bluesheetdocuments">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="redFlags">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_strengths_bluesheetdocuments">
+    <End Role="bluesheetdocuments" Type="Self.bluesheetdocuments" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="strengths" Type="Self.strengths" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bluesheetdocuments">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="strengths">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GendacBlueSheetModelStoreContainer">
+    <EntitySet Name="bluesheetdocuments" EntityType="Self.bluesheetdocuments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="buyers" EntityType="Self.buyers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="redFlags" EntityType="Self.redFlags" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="strengths" EntityType="Self.strengths" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_buyers_bluesheetdocuments" Association="Self.FK_buyers_bluesheetdocuments">
+      <End Role="bluesheetdocuments" EntitySet="bluesheetdocuments" />
+      <End Role="buyers" EntitySet="buyers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_redFlags_bluesheetdocuments" Association="Self.FK_redFlags_bluesheetdocuments">
+      <End Role="bluesheetdocuments" EntitySet="bluesheetdocuments" />
+      <End Role="redFlags" EntitySet="redFlags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_strengths_bluesheetdocuments" Association="Self.FK_strengths_bluesheetdocuments">
+      <End Role="bluesheetdocuments" EntitySet="bluesheetdocuments" />
+      <End Role="strengths" EntitySet="strengths" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
